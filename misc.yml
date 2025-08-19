@@ -1,0 +1,32 @@
+# pod size manage - resources and limit
+
+containerPort: 80
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+   cpu: 200m
+   memory: 256Mi
+
+# probes - liveness,readiness,startup to check pod is working or not
+
+#containerPort: 80
+livenessProbe:
+  httpGet:
+   path: /
+   port: 8000
+
+# taint/tolerance - it is a way of telling k8s cluster to not schedule pod on perticular node
+
+#command - kubectl taint node node_name prod=true:NoSchedule
+
+#to untaint command - kubectl taint node node_name prod=true:NoSchedule-
+
+# to bypass taint
+#containerPort: 80
+tolerations:
+ - key: "prod"
+   operator: "Equal"
+   value: "true"
+   effect: "NoSchedule"

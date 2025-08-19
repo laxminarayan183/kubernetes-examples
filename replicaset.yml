@@ -1,0 +1,22 @@
+## To create pods,if one pod you change all pod changes.You cannot rollout,rollback updates 
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+  name: nginx-replicaset
+  namespace: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx 
+  template:
+    metadata: 
+      name: nginx
+      labels: 
+      app: nginx 
+      spec: 
+  containers:
+  - name: nginx
+    image: nginx:latest
+    ports:
+    -  containerPort: 80

@@ -1,0 +1,5 @@
+# To create a group of pods
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: nginx
